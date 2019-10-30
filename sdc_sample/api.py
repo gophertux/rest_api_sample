@@ -12,7 +12,8 @@ def return_launchpad_info():
     url = request.url
 
     if launchpad_info.status_code == 400:
-        return json.dumps({"msg": f"Your request {url} was unsuccessful. Please check your query and try again"})
+        return json.dumps(
+            {"msg": f"Request {url} is invalid. Please check your syntax"})
     elif launchpad_info.status_code != 200:
         return json.dumps({"msg": "internal server error - please check the logs"}), 500
 
