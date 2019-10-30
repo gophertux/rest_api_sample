@@ -3,6 +3,9 @@
 #TODO: error handling between middleware and front-end
 #TODO: README and requirements file
 
+#launchpad_id = id; launchpad_name = full_name; launchpad_status = status
+#TODO: logging, db
+
 from flask import Flask
 app = Flask(__name__)
 from flask import request 
