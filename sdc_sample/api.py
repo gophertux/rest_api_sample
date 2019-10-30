@@ -8,7 +8,7 @@ import middleware
 
 @app.route('/v0/launchpad_info')
 def return_launchpad_info():
-    launchpad_info = middleware.launchpad_info() #middleware.retrieve_launchpad_info(request.args.get('filter', ''))
+    launchpad_info = middleware.launchpad_info(request.args)
 
     if launchpad_info.status_code != 200:
         return json.dumps({"msg": "internal server error - please check the logs"}), 500
