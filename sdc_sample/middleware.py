@@ -47,8 +47,11 @@ def retrieve_data_from_spacex_api(query_filter):
 
     return site_stats, 200
 
-#TODO: leaving this here to illustrate how we'd substitute a database 
-#TODO: integration
+#TODO: leaving this here to illustrate how we'd create a db integration
+#NOTE: while this function would have to normalize errors to a status code 
+#NOTE: in its current iteration, this was done to facilitate a quick integration 
+#NOTE: with the existing logic for the caller. In prod, we'd probably want to 
+#NOTE: create a response obj or take other steps to better decouple this abstraction 
 def retrieve_data_from_database(query_filter):
     pass
 
