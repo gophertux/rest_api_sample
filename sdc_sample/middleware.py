@@ -16,7 +16,7 @@ def retrieve_data_from_spacex_api(query_filter):
     #This is done to ensure we're able to filter data in the manner expected by
     #the third-party API
     if query_filter and "limit" not in query_params:
-        logging.info({"msg": f"No valid query parameter provided - API supports limit"})
+        logging.info(f"msg: No valid query parameter provided - API supports limit")
     
         return None, 400
 
@@ -27,8 +27,7 @@ def retrieve_data_from_spacex_api(query_filter):
     site_stats   = []
 
     if api_response.status_code >= 400:
-        logging.info(
-            {"msg": f"API call to {url} did not complete successfully"})
+        logging.info(f"msg: API call to {url} did not complete successfully")
 
         return None, api_response.status_code
     
