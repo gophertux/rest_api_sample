@@ -3,7 +3,7 @@ import logging
 import os 
 import requests
 
-base_url = os.getenv("LAUNCHPAD_URL")
+base_url = os.getenv("LAUNCHPAD_URL", "https://api.spacexdata.com/v2/launchpads")
 logging.basicConfig(filename="output.log", level=logging.INFO)
 
 #This function allows us to modularize how we collect data, so we can easily
