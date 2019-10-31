@@ -6,8 +6,6 @@ import json
 import logging
 import middleware
 
-#TODO: consider whether I want to run flake8
-
 """
     This route allows a user to query for launchpad information. It is fulfilled
     via a middle abstraction to preserve modularity and decouple this from the 
