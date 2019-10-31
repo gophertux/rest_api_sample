@@ -15,20 +15,20 @@ def retrieve_data_from_spacex_api(query_filter):
 
     #This is done to ensure we're able to filter data in the manner expected by
     #the third-party API
-    if query_filter is not None and "limit" not in query_params:
-        logging.info(json.dumps({"msg": f"No valid query parameter provided - API supports limit"}))
+    if query_filter and "limit" not in query_params:
+        logging.info({"msg": f"No valid query parameter provided - API supports limit"})
     
         return None, 400
 
-    elif query_filter is not None and "limit" in query_params:
+    elif query_filter and "limit" in query_params:
         query_url = base_url + "?limit" + "=" + query_filter.get("limit")
 
     api_response = requests.get(query_url)
     site_stats   = []
 
     if api_response.status_code >= 400:
-        logging.info(json.dumps(
-            {"msg": f"API call to {url} did not complete successfully"}))
+        logging.info(
+            {"msg": f"API call to {url} did not complete successfully"})
 
         return None, api_response.status_code
     
@@ -47,6 +47,7 @@ def retrieve_data_from_spacex_api(query_filter):
 
 #TODO: this will be used when we migrate from using the API directly to 
 #instead retrieving data from a DB
+#TODO: decide on comment about breaking abstraction to facility rapid dev
 def retrieve_data_from_database(query_filter=None):
     pass
 
@@ -66,4 +67,4 @@ class LaunchpadInfo():
     
 
 if __name__ == "__main__":
-    LaunchpadInfo(None)
+    LaunchpadInfo()
