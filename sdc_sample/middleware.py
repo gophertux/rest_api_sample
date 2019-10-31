@@ -16,12 +16,13 @@ def retrieve_data_from_spacex_api(query_filter):
     query_params = query_filter.keys()
 
     #This is done to ensure we're able to filter data in the manner expected by
-    #the third-party API
+    #the third-party API. We could expand this if needed to include other filters.
+    #If a user doesn't use supported filter syntax, we let them know via a msg
     if query_filter and "limit" not in query_params:
         logging.info(f"msg: No valid query parameter provided - API supports limit")
     
         return None, 400
-
+    
     elif query_filter and "limit" in query_params:
         query_url = base_url + "?limit" + "=" + query_filter.get("limit")
 
@@ -48,7 +49,7 @@ def retrieve_data_from_spacex_api(query_filter):
 
 #TODO: leaving this here to illustrate how we'd substitute a database 
 #TODO: integration
-def retrieve_data_from_database(query_filter=None):
+def retrieve_data_from_database(query_filter):
     pass
 
 """
