@@ -6,9 +6,11 @@ import requests
 base_url = os.getenv("LAUNCHPAD_URL", "https://api.spacexdata.com/v2/launchpads")
 logging.basicConfig(filename="output.log", level=logging.INFO)
 
-#This function allows us to modularize how we collect data, so we can easily
-#change what function is called from our launchpad_info class, which represents
-#our data model.
+"""
+   This function allows us to quickly swap between using the API and a database
+   call, as needed. It is intended to encapsulate all of the logic necessary
+   for interacting with the spacex API, and hide this from the caller
+"""
 def retrieve_data_from_spacex_api(query_filter):
     query_url    = base_url
     query_params = query_filter.keys()
@@ -44,9 +46,8 @@ def retrieve_data_from_spacex_api(query_filter):
 
     return site_stats, 200
 
-#TODO: this will be used when we migrate from using the API directly to 
-#instead retrieving data from a DB
-#TODO: decide on comment about breaking abstraction to facility rapid dev
+#TODO: leaving this here to illustrate how we'd substitute a database 
+#TODO: integration
 def retrieve_data_from_database(query_filter=None):
     pass
 
