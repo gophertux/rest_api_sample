@@ -8,7 +8,7 @@ import middleware
 
 """
     This route allows a user to query for launchpad information. It is fulfilled
-    via a middle abstraction to preserve modularity and decouple this from the 
+    via a middleware abstraction to preserve modularity and decouple this from the 
     system handling the request
 """
 @app.route('/v0/launchpad_info')
