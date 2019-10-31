@@ -14,14 +14,14 @@ def retrieve_data_from_spacex_api(query_filter):
     query_params = query_filter.keys()
 
     #This is done to ensure we're able to filter data in the manner expected by
-    #the third-party APIjj
+    #the third-party API
     if query_filter is not None and "limit" not in query_params:
         logging.info(json.dumps({"msg": f"No valid query parameter provided - API supports limit"}))
     
         return None, 400
 
     elif query_filter is not None and "limit" in query_params:
-        query_url = base_url + "?" + "limit" + "=" + query_filter.get("limit")
+        query_url = base_url + "?limit" + "=" + query_filter.get("limit")
 
     api_response = requests.get(query_url)
     site_stats   = []
@@ -59,10 +59,11 @@ def retrieve_data_from_database(query_filter=None):
     This should also make testing easier because the functions are more atomic
     and can also be tested in parallel for performance improvements, if desired 
 """
-class launchpad_info():
-    def __init__(self, qf):
-        self.site_stats, self.status_code = retrieve_data_from_spacex_api(qf.to_dict())
+class LaunchpadInfo():
+    def __init__(self, query_filter):
+        self.site_stats, self.status_code = retrieve_data_from_spacex_api(
+                query_filter.to_dict())
     
 
 if __name__ == "__main__":
-    launchpad_info(None)
+    LaunchpadInfo(None)
