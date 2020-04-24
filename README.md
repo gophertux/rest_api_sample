@@ -1,4 +1,4 @@
-# sdc_sample
+# rest_api_sample
 
 *****INITIAL SETUP*****
 1. Clone the repository to your local machine
